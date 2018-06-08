@@ -11,7 +11,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "c91372d2-a672-463e-b548-b3e2a5576914",
+						"id": "d8c9f157-efe4-430f-abf9-d634e51d4126",
 						"type": "text/javascript",
 						"exec": [
 							"var restaurantResponse = pm.response.json();",
@@ -20,7 +20,7 @@
 							"    pm.expect(restaurantList.length ).to.eql(3);",
 							"});",
 							"pm.test(\"ร้านแรกชื่อ SOUL Food & Drinks มีระยะห่าง 150 ราคา Low ชนิด Cafe\", function () {",
-							"    pm.expect(restaurantList[0].name ).to.eql(\"SOUL Food & drintcs\");",
+							"    pm.expect(restaurantList[0].name ).to.eql(\"SOUL Food & Drinks\");",
 							"    pm.expect(restaurantList[0].location ).to.eql({lat:13.8073120,long:100.568980});",
 							"    pm.expect(restaurantList[0].distance ).to.eql(150);",
 							"    pm.expect(restaurantList[0].price ).to.eql(\"Low\");",
@@ -35,7 +35,7 @@
 							"});pm.test(\"ร้านสามชื่อ ทิศเหนือ มีระยะห่าง 50 ราคา Low ชนิด อาหารเหนือ\", function () {",
 							"    pm.expect(restaurantList[2].name ).to.eql(\"ทิศเหนือ\");",
 							"    pm.expect(restaurantList[2].location ).to.eql({lat:13.8073120,long:100.568980});",
-							"    pm.expect(restaurantList[2].distance ).to.eql(150);",
+							"    pm.expect(restaurantList[2].distance ).to.eql(50);",
 							"    pm.expect(restaurantList[2].price ).to.eql(\"Low\");",
 							"    pm.expect(restaurantList[2].type ).to.eql(\"อาหารเหนือ\");",
 							"});"
