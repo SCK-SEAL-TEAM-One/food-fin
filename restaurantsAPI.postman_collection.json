@@ -11,7 +11,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "ab08ac54-4078-4846-a3d7-3a8ce493d572",
+						"id": "c91372d2-a672-463e-b548-b3e2a5576914",
 						"type": "text/javascript",
 						"exec": [
 							"var restaurantResponse = pm.response.json();",
@@ -33,7 +33,7 @@
 							"    pm.expect(restaurantList[1].price ).to.eql(\"Low\");",
 							"    pm.expect(restaurantList[1].type ).to.eql(\"อาหารอีสาน\");",
 							"});pm.test(\"ร้านสามชื่อ ทิศเหนือ มีระยะห่าง 50 ราคา Low ชนิด อาหารเหนือ\", function () {",
-							"    pm.expect(restaurantList[2].name ).to.eql(\"SOUL Food & drintcs\");",
+							"    pm.expect(restaurantList[2].name ).to.eql(\"ทิศเหนือ\");",
 							"    pm.expect(restaurantList[2].location ).to.eql({lat:13.8073120,long:100.568980});",
 							"    pm.expect(restaurantList[2].distance ).to.eql(150);",
 							"    pm.expect(restaurantList[2].price ).to.eql(\"Low\");",

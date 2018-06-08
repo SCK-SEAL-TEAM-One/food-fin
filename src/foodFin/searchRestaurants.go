@@ -18,6 +18,7 @@ type location struct {
 }
 
 func searchRestaurants(currentLocation location, radius float64) restaurantsResponse {
+
 	return restaurantsResponse{
 		RestaurantList: []restaurant{
 			restaurant{
@@ -36,16 +37,18 @@ func searchRestaurants(currentLocation location, radius float64) restaurantsResp
 				price:          "Low",
 				distance:       80.00,
 				location: location{
-					lat: 13.8073284, long: 100.568153,
+					lat:  13.8073284,
+					long: 100.568153,
 				},
 			},
 			restaurant{
 				name:           "ทิศเหนือ",
 				restaurantType: "อาหารเหนือ",
 				price:          "Low",
-				distance:       150.00,
+				distance:       50.00,
 				location: location{
-					lat: 13.8073120, long: 100.568980,
+					lat:  13.8073120,
+					long: 100.568980,
 				},
 			},
 		},

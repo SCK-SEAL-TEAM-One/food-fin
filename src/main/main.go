@@ -1,16 +1,13 @@
 package main
 
 import (
-	"fmt"
-	"html"
+	"foodFin"
 	"log"
 	"net/http"
 )
 
 func main() {
-	http.HandleFunc("/restaurants", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, "Hello, %q", html.EscapeString(r.URL.Path))
-	})
+	http.HandleFunc("/restaurants", foodFin.RestaurantHandler)
 
 	log.Fatal(http.ListenAndServe(":8080", nil))
 
