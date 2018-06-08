@@ -1,5 +1,11 @@
 package foodFin
 
+import (
+	"math"
+
+	haversine "github.com/paultag/go-haversine"
+)
+
 type restaurantsResponse struct {
 	RestaurantList []restaurant `json:"restaurantList"`
 }
@@ -17,40 +23,47 @@ type location struct {
 	Long float64 `json:"long"`
 }
 
-func searchRestaurants(currentLocation location, radius float64) restaurantsResponse {
+func CalculateDistance(startLat, startLong, endLat, endLong float64) float64 {
+	origin := haversine.Point{Lat: startLat, Lon: startLong}
+	destination := haversine.Point{Lat: endLat, Lon: endLong}
 
-	return restaurantsResponse{
-		RestaurantList: []restaurant{
-			restaurant{
-				Name:           "SOUL Food & Drinks",
-				RestaurantType: "Cafe",
-				Price:          "Low",
-				Distance:       150.00,
-				Location: location{
-					Lat:  13.8073120,
-					Long: 100.568980,
-				},
-			},
-			restaurant{
-				Name:           "ลาบอุดร",
-				RestaurantType: "อาหารอีสาน",
-				Price:          "Low",
-				Distance:       80.00,
-				Location: location{
-					Lat:  13.8073284,
-					Long: 100.568153,
-				},
-			},
-			restaurant{
-				Name:           "ทิศเหนือ",
-				RestaurantType: "อาหารเหนือ",
-				Price:          "Low",
-				Distance:       50.00,
-				Location: location{
-					Lat:  13.8073120,
-					Long: 100.568980,
-				},
+	return math.Round(float64(origin.MetresTo(destination))*100) / 100
+}
+
+func searchRestaurants(currentLocation location, radius float64) restaurantsResponse {
+	restaurants := []restaurant{
+		restaurant{
+			Name:           "SOUL Food & Drinks",
+			RestaurantType: "Cafe",
+			Price:          "Low",
+			Location: location{
+				Lat:  13.8123479,
+				Long: 100.5647322,
 			},
 		},
+		restaurant{
+			Name:           "ลาบอุดร",
+			RestaurantType: "อาหารอีสาน",
+			Price:          "Low",
+			Location: location{
+				Lat:  13.8122417,
+				Long: 100.5636951,
+			},
+		},
+		restaurant{
+			Name:           "ทิศเหนือ",
+			RestaurantType: "อาหารเหนือ",
+			Price:          "Low",
+			Location: location{
+				Lat:  13.8120852,
+				Long: 100.5630476,
+			},
+		},
+	}
+	for i, restaurant := range restaurants {
+		restaurants[i].Distance = CalculateDistance(currentLocation.Lat, currentLocation.Long, restaurant.Location.Lat, restaurant.Location.Long)
+	}
+	return restaurantsResponse{
+		RestaurantList: restaurants,
 	}
 }

@@ -4,6 +4,20 @@ import (
 	"testing"
 )
 
+func Test_CalculateDistance_Input_Start_lat_36_dot_12_Start_log_86_dot_67_End_let_33_dot_94_End_log_118_dot_40_Should_be_2887_dot_2599506071097(t *testing.T) {
+
+	startLat := 13.8124384
+	startLong := 100.5644465
+	endLat := 13.8121383
+	endLong := 100.5633476
+	expected := 123.26
+
+	actualResult := CalculateDistance(startLat, startLong, endLat, endLong)
+	if actualResult != expected {
+		t.Error("Expected Distance is:", actualResult, "but it is", expected)
+	}
+}
+
 func Test_searchRestaurants_Input_SCK_DOJOs_Location_Radius_200m_Should_be_3_Results(t *testing.T) {
 	sckDojoLocation := location{
 		Lat:  13.8073167,
@@ -16,30 +30,30 @@ func Test_searchRestaurants_Input_SCK_DOJOs_Location_Radius_200m_Should_be_3_Res
 				Name:           "SOUL Food & Drinks",
 				RestaurantType: "Cafe",
 				Price:          "Low",
-				Distance:       150.00,
+				Distance:       724.47,
 				Location: location{
-					Lat:  13.8073120,
-					Long: 100.568980,
+					Lat:  13.8123479,
+					Long: 100.5647322,
 				},
 			},
 			restaurant{
 				Name:           "ลาบอุดร",
 				RestaurantType: "อาหารอีสาน",
 				Price:          "Low",
-				Distance:       80.00,
+				Distance:       792.1,
 				Location: location{
-					Lat:  13.8073284,
-					Long: 100.568153,
+					Lat:  13.8122417,
+					Long: 100.5636951,
 				},
 			},
 			restaurant{
 				Name:           "ทิศเหนือ",
 				RestaurantType: "อาหารเหนือ",
 				Price:          "Low",
-				Distance:       50.00,
+				Distance:       832.81,
 				Location: location{
-					Lat:  13.8073120,
-					Long: 100.568980,
+					Lat:  13.8120852,
+					Long: 100.5630476,
 				},
 			},
 		},
