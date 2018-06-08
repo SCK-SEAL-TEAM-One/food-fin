@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "input_lat13.8073167_long_100.568995_radius_200m_type_All_price_Low_should_be_3restaurants?lat=13.8073167&long=100.568995&radius=200&type=All&prince=Low",
+			"name": "input_lat13.8073167_long_100.568995_radius_200m_type_All_price_Low_should_be_3restaurants",
 			"event": [
 				{
 					"listen": "test",
@@ -48,11 +48,14 @@
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "input_lat13.8073167_long_100.568995_radius_200m_type_All_price_Low_should_be_3restaurants?lat=13.8073167&long=100.568995&radius=200&type=All&prince=Low",
+					"raw": "http://localhost:8080/restaurants?lat=13.8073167&long=100.568995&radius=200&type=All&prince=Low",
+					"protocol": "http",
 					"host": [
-						"input_lat13",
-						"8073167_long_100",
-						"568995_radius_200m_type_All_price_Low_should_be_3restaurants"
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restaurants"
 					],
 					"query": [
 						{
