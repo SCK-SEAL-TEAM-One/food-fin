@@ -1,43 +1,77 @@
 {
 	"info": {
-		"_postman_id": "a58aca3c-37e1-4fb8-8a30-d0e3b752da1f",
-		"name": "restaurants API",
+		"_postman_id": "5ac3423a-9c8c-422d-96fb-7b0ddbffa642",
+		"name": "calculatedate",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "input_lat13.8073167_long_100.568995_radius_200m_type_All_price_Low_should_be_3restaurants",
+			"name": "input_start_date_10_11_1983_result_should_be_12626",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "1594ed4f-e4c1-4c57-9aa2-3a4068732fe5",
+						"id": "b44bf1aa-aa42-46bf-860b-abff5ccaebe9",
 						"type": "text/javascript",
 						"exec": [
-							"var restaurantResponse = pm.response.json();",
-							"var restaurantList =restaurantResponse.restaurantList",
-							"pm.test(\"ผลการค้นหาต้องมี 3 รายการ\", function () {",
-							"    pm.expect(restaurantList.length ).to.eql(3);",
+							"pm.test(\"daynamefrom should be display Thursday\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.daynamefrom).to.eql(\"Thursday 10 November 1983\");",
 							"});",
-							"pm.test(\"ร้านแรกชื่อ SOUL Food & Drinks มีระยะห่าง 150 ราคา Low ชนิด Cafe\", function () {",
-							"    pm.expect(restaurantList[0].name ).to.eql(\"SOUL Food & Drinks\");",
-							"    pm.expect(restaurantList[0].location ).to.eql( { lat: 13.8123479, long: 100.5647322 });",
-							"    pm.expect(restaurantList[0].distance ).to.eql(724.47);",
-							"    pm.expect(restaurantList[0].price ).to.eql(\"Low\");",
-							"    pm.expect(restaurantList[0].type ).to.eql(\"Cafe\");",
+							"",
+							"pm.test(\"daynameto should be display Monday\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.daynameto).to.eql(\"Monday 4 June 2018\");",
 							"});",
-							"pm.test(\"ร้านสองชื่อ SOUL ลาบอุดร มีระยะห่าง 80 ราคา Low อาหารอีสาน\", function () {",
-							"    pm.expect(restaurantList[1].name ).to.eql(\"ลาบอุดร\");",
-							"    pm.expect(restaurantList[1].location ).to.eql( { lat: 13.8122417, long: 100.5636951 });",
-							"    pm.expect(restaurantList[1].distance ).to.eql(792.1);",
-							"    pm.expect(restaurantList[1].price ).to.eql(\"Low\");",
-							"    pm.expect(restaurantList[1].type ).to.eql(\"อาหารอีสาน\");",
-							"});pm.test(\"ร้านสามชื่อ ทิศเหนือ มีระยะห่าง 50 ราคา Low ชนิด อาหารเหนือ\", function () {",
-							"    pm.expect(restaurantList[2].name ).to.eql(\"ทิศเหนือ\");",
-							"    pm.expect(restaurantList[2].location ).to.eql({ lat: 13.8120852, long: 100.5630476 } );",
-							"    pm.expect(restaurantList[2].distance ).to.eql(832.81);",
-							"    pm.expect(restaurantList[2].price ).to.eql(\"Low\");",
-							"    pm.expect(restaurantList[2].type ).to.eql(\"อาหารเหนือ\");",
+							"",
+							"pm.test(\"resultday should be display 12,626\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.resultday).to.eql(\"12,626\");",
+							"});",
+							"",
+							"pm.test(\"resultmonth should be display 6\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.resultmonth).to.eql(\"6\");",
+							"});",
+							"",
+							"pm.test(\"resultyear should be display 34\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.resultyear).to.eql(\"34\");",
+							"});",
+							"",
+							"pm.test(\"resultoverday should be display 26\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.resultoverday).to.eql(\"26\");",
+							"});",
+							"",
+							"pm.test(\"second should be display 1,090,886,400\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.second).to.eql(\"1,090,886,400\");",
+							"});",
+							"",
+							"pm.test(\"minute should be display 18,181,440\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.minute).to.eql(\"18,181,440\");",
+							"});",
+							"",
+							"pm.test(\"hours should be display 303,024\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.hours).to.eql(\"303,024\");",
+							"});",
+							"",
+							"pm.test(\"week should be display 1,803\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.week).to.eql(\"1,803\");",
+							"});",
+							"",
+							"pm.test(\"dayoverofweek should be display 5\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.dayoverofweek).to.eql(\"5\");",
+							"});",
+							"",
+							"pm.test(\"percent should be display 3459.18\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.percent).to.eql(\"3459.18\");",
 							"});"
 						]
 					}
@@ -45,38 +79,491 @@
 			],
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "day",
+						"value": "10"
+					},
+					{
+						"key": "month",
+						"value": "11"
+					},
+					{
+						"key": "year",
+						"value": "1983"
+					}
+				],
 				"body": {},
 				"url": {
-					"raw": "http://localhost:8080/restaurants?lat=13.8073167&long=100.568995&radius=200&type=All&prince=Low",
+					"raw": "http://localhost:9002/apicalculatedurationdate?startdate=10/11/1983&enddate=4/6/2018",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8080",
+					"port": "9002",
 					"path": [
-						"restaurants"
+						"apicalculatedurationdate"
 					],
 					"query": [
 						{
-							"key": "lat",
-							"value": "13.8073167"
+							"key": "startdate",
+							"value": "10/11/1983"
 						},
 						{
-							"key": "long",
-							"value": "100.568995"
+							"key": "enddate",
+							"value": "4/6/2018"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "input_start_date_27_7_1993_result_should_be_9079",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8863fe01-01c3-4a87-82af-3e2d50c7ab0f",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"daynamefrom should be display Tuesday\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.daynamefrom).to.eql(\"Tuesday 27 July 1993\");",
+							"});",
+							"",
+							"pm.test(\"daynameto should be display Monday\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.daynameto).to.eql(\"Monday 4 June 2018\");",
+							"});",
+							"",
+							"pm.test(\"resultday should be display 9079\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.resultday).to.eql(\"9079\");",
+							"});",
+							"",
+							"pm.test(\"resultmonth should be display 10\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.resultmonth).to.eql(\"10\");",
+							"});",
+							"",
+							"pm.test(\"resultyear should be display 24\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.resultyear).to.eql(\"24\");",
+							"});",
+							"",
+							"pm.test(\"resultoverday should be display 9\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.resultoverday).to.eql(\"9\");",
+							"});",
+							"",
+							"pm.test(\"second should be display 784425600\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.second).to.eql(\"784425600\");",
+							"});",
+							"",
+							"pm.test(\"minute should be display 13073760\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.minute).to.eql(\"13073760\");",
+							"});",
+							"",
+							"pm.test(\"hours should be display 217896\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.hours).to.eql(\"217896\");",
+							"});",
+							"",
+							"pm.test(\"week should be display 9079\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.week).to.eql(\"9079\");",
+							"});",
+							"",
+							"pm.test(\"dayoverofweek should be display 1297\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.dayoverofweek).to.eql(\"1297\");",
+							"});",
+							"",
+							"pm.test(\"percent should be display 2487.40\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.percent).to.eql(\"2487.40\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "day",
+						"value": "27"
+					},
+					{
+						"key": "month",
+						"value": "7"
+					},
+					{
+						"key": "year",
+						"value": "1993"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:9002/apicalculatedurationdate?startdate=27/7/1993&enddate=4/6/2018",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9002",
+					"path": [
+						"apicalculatedurationdate"
+					],
+					"query": [
+						{
+							"key": "startdate",
+							"value": "27/7/1993"
 						},
 						{
-							"key": "radius",
-							"value": "200"
+							"key": "enddate",
+							"value": "4/6/2018"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "input_start_date_4_1_2018_result_should_be_152",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "26bafa32-a751-41fc-a059-67a654784e7a",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"daynamefrom should be display Thursday\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.daynamefrom).to.eql(\"Thursday 4 January 2018\");",
+							"});",
+							"",
+							"pm.test(\"daynameto should be display Monday\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.daynameto).to.eql(\"Monday 4 June 2018\");",
+							"});",
+							"",
+							"pm.test(\"resultday should be display 152\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.resultday).to.eql(\"152\");",
+							"});",
+							"",
+							"pm.test(\"resultmonth should be display 5\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.resultmonth).to.eql(\"5\");",
+							"});",
+							"",
+							"pm.test(\"resultyear should be display 0\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.resultyear).to.eql(\"0\");",
+							"});",
+							"",
+							"pm.test(\"resultoverday should be display 1\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.resultoverday).to.eql(\"1\");",
+							"});",
+							"",
+							"pm.test(\"second should be display 13132800\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.second).to.eql(\"13132800\");",
+							"});",
+							"",
+							"pm.test(\"minute should be display 218880\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.minute).to.eql(\"218880\");",
+							"});",
+							"",
+							"pm.test(\"hours should be display 3648\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.hours).to.eql(\"3648\");",
+							"});",
+							"",
+							"pm.test(\"week should be display 21\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.week).to.eql(\"21\");",
+							"});",
+							"",
+							"pm.test(\"dayoverofweek should be display 5\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.dayoverofweek).to.eql(\"5\");",
+							"});",
+							"",
+							"pm.test(\"percent should be display 41.64\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.percent).to.eql(\"41.64\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "day",
+						"value": "4"
+					},
+					{
+						"key": "month",
+						"value": "1"
+					},
+					{
+						"key": "year",
+						"value": "2018"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:9002/apicalculatedurationdate?startdate=4/1/2018&enddate=4/6/2018",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9002",
+					"path": [
+						"apicalculatedurationdate"
+					],
+					"query": [
+						{
+							"key": "startdate",
+							"value": "4/1/2018"
 						},
 						{
-							"key": "type",
-							"value": "All"
+							"key": "enddate",
+							"value": "4/6/2018"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "input_start_date_19_9_1987_result_should_be_11217",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9f04f241-31c2-4921-bb84-6f5dfbe03ed1",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"daynamefrom should be display Saturday\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.daynamefrom).to.eql(\"Saturday 19 September 1987\");",
+							"});",
+							"",
+							"pm.test(\"daynameto should be display Monday\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.daynameto).to.eql(\"Monday 4 June 2018\");",
+							"});",
+							"",
+							"pm.test(\"resultday should be display 11217\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.resultday).to.eql(\"11217\");",
+							"});",
+							"",
+							"pm.test(\"resultmonth should be display 8\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.resultmonth).to.eql(\"8\");",
+							"});",
+							"",
+							"pm.test(\"resultyear should be display 30\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.resultyear).to.eql(\"30\");",
+							"});",
+							"",
+							"pm.test(\"resultoverday should be display 17\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.resultoverday).to.eql(\"17\");",
+							"});",
+							"",
+							"pm.test(\"second should be display 969148800\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.second).to.eql(\"969148800\");",
+							"});",
+							"",
+							"pm.test(\"minute should be display 16152480\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.minute).to.eql(\"16152480\");",
+							"});",
+							"",
+							"pm.test(\"hours should be display 269208\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.hours).to.eql(\"269208\");",
+							"});",
+							"",
+							"pm.test(\"week should be display 1602\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.week).to.eql(\"1602\");",
+							"});",
+							"",
+							"pm.test(\"dayoverofweek should be display 3\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.dayoverofweek).to.eql(\"3\");",
+							"});",
+							"",
+							"pm.test(\"percent should be display 3073.15\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.percent).to.eql(\"3073.15\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "day",
+						"value": "19"
+					},
+					{
+						"key": "month",
+						"value": "9"
+					},
+					{
+						"key": "year",
+						"value": "1987"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:9002/apicalculatedurationdate?startdate=19/9/1987&enddate=4/6/2018",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9002",
+					"path": [
+						"apicalculatedurationdate"
+					],
+					"query": [
+						{
+							"key": "startdate",
+							"value": "19/9/1987"
 						},
 						{
-							"key": "prince",
-							"value": "Low"
+							"key": "enddate",
+							"value": "4/6/2018"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "input_start_date_29_8_1990_result_should_be_10142",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b1db2c4b-e789-4e1e-9cc8-90c2230c6aff",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"daynamefrom should be display Wednesday\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.daynamefrom).to.eql(\"Wednesday 29 August 1990\");",
+							"});",
+							"",
+							"pm.test(\"daynameto should be display Monday\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.daynameto).to.eql(\"Monday 4 June 2018\");",
+							"});",
+							"",
+							"pm.test(\"resultday should be display 10142\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.resultday).to.eql(\"10142\");",
+							"});",
+							"",
+							"pm.test(\"resultmonth should be display 9\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.resultmonth).to.eql(\"9\");",
+							"});",
+							"",
+							"pm.test(\"resultyear should be display 27\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.resultyear).to.eql(\"27\");",
+							"});",
+							"",
+							"pm.test(\"resultoverday should be display 7\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.resultoverday).to.eql(\"7\");",
+							"});",
+							"",
+							"pm.test(\"second should be display 876268800\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.second).to.eql(\"876268800\");",
+							"});",
+							"",
+							"pm.test(\"minute should be display 14604480\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.minute).to.eql(\"14604480\");",
+							"});",
+							"",
+							"pm.test(\"hours should be display 243408\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.hours).to.eql(\"243408\");",
+							"});",
+							"",
+							"pm.test(\"week should be display 1448\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.week).to.eql(\"1448\");",
+							"});",
+							"",
+							"pm.test(\"dayoverofweek should be display 6\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.dayoverofweek).to.eql(\"6\");",
+							"});",
+							"",
+							"pm.test(\"percent should be display 2778.63\", function () {",
+							"    var duration = pm.response.json();",
+							"    pm.expect(duration.percent).to.eql(\"2778.63\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "day",
+						"value": "29"
+					},
+					{
+						"key": "month",
+						"value": "8"
+					},
+					{
+						"key": "year",
+						"value": "1990"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:9002/apicalculatedurationdate?startdate=29/8/1990&enddate=4/6/2018",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9002",
+					"path": [
+						"apicalculatedurationdate"
+					],
+					"query": [
+						{
+							"key": "startdate",
+							"value": "29/8/1990"
+						},
+						{
+							"key": "enddate",
+							"value": "4/6/2018"
 						}
 					]
 				}

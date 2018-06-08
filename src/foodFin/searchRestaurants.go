@@ -4,6 +4,8 @@ import (
 	"math"
 
 	haversine "github.com/paultag/go-haversine"
+	mgo "gopkg.in/mgo.v2"
+	"gopkg.in/mgo.v2/bson"
 )
 
 type restaurantsResponse struct {
@@ -11,16 +13,17 @@ type restaurantsResponse struct {
 }
 
 type restaurant struct {
-	Name           string   `json:"name"`
-	RestaurantType string   `json:"type"`
-	Price          string   `json:"price"`
-	Distance       float64  `json:"distance"`
-	Location       location `json:"location"`
+	ID             bson.ObjectId `json:"id" bson:"_id,omitempty"`
+	Name           string        `json:"name" bson:"name"`
+	RestaurantType string        `json:"type" bson:"type"`
+	Price          string        `json:"price" bson:"price"`
+	Distance       float64       `json:"distance" bson:"distance"`
+	Location       location      `json:"location" bson:"location"`
 }
 
 type location struct {
-	Lat  float64 `json:"lat"`
-	Long float64 `json:"long"`
+	Lat  float64 `json:"lat" bson:"lat"`
+	Long float64 `json:"long" bson:"long"`
 }
 
 func CalculateDistance(startLat, startLong, endLat, endLong float64) float64 {
@@ -30,36 +33,9 @@ func CalculateDistance(startLat, startLong, endLat, endLong float64) float64 {
 	return math.Round(float64(origin.MetresTo(destination))*100) / 100
 }
 
-func searchRestaurants(currentLocation location, radius float64) restaurantsResponse {
-	restaurants := []restaurant{
-		restaurant{
-			Name:           "SOUL Food & Drinks",
-			RestaurantType: "Cafe",
-			Price:          "Low",
-			Location: location{
-				Lat:  13.8123479,
-				Long: 100.5647322,
-			},
-		},
-		restaurant{
-			Name:           "ลาบอุดร",
-			RestaurantType: "อาหารอีสาน",
-			Price:          "Low",
-			Location: location{
-				Lat:  13.8122417,
-				Long: 100.5636951,
-			},
-		},
-		restaurant{
-			Name:           "ทิศเหนือ",
-			RestaurantType: "อาหารเหนือ",
-			Price:          "Low",
-			Location: location{
-				Lat:  13.8120852,
-				Long: 100.5630476,
-			},
-		},
-	}
+func searchRestaurants(RestaurantsCollection *mgo.Collection, currentLocation location, radius float64) restaurantsResponse {
+	restaurants := []restaurant{}
+	RestaurantsCollection.Find(bson.M{}).All(&restaurants)
 	for i, restaurant := range restaurants {
 		restaurants[i].Distance = CalculateDistance(currentLocation.Lat, currentLocation.Long, restaurant.Location.Lat, restaurant.Location.Long)
 	}
